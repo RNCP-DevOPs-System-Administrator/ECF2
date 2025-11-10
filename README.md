@@ -1,9 +1,10 @@
 # RNCP DevOps System Administrator
-<ins>**Evaluation en cours de Formation ECF3**</ins>
+<ins>**Evaluation en cours de Formation ECF2**</ins>
 
 #  🚀 AUTOMATISER LE DEPLOIEMENT D'UNE INFRASTRUCTURE
+# avec TERRAFORM & ANSIBLE
 
-### ✅ Intruction
+### ✅ Introdution
 - Dans le cadre de ce projet, la mise en place d’une machine sous Debian servira à la fois de poste de développement et de contrôleur pour Ansible et Terraform .
 - Ce poste aura une place centrale, et permettra de gérer l’infrastructure as code (IaC) et de développer dans un environnement uniforme et contrôlé.
 - L’objectif est de créer un système où la configuration, le déploiement et la gestion de l’infrastructure seront automatisés et réplicables, réduisant ainsi les risques d’erreurs manuelles et augmentant la productivité.
