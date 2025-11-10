@@ -12,9 +12,9 @@ provider "proxmox" {
  
   pm_api_url = "https://192.168.1.10:8006/api2/json"
   pm_user = "root@pam"
-  pm_password = "Sv650s31000!"
+  pm_password = ""
   # pm_api_token_id = "terraform@pam!terraform"
-  # pm_api_token_secret = "﻿66091622-5711-4c42-819b-3c5ab85bd133"
+  # pm_api_token_secret = "﻿"
   pm_tls_insecure = true
 } 
 
@@ -66,3 +66,4 @@ resource "null_resource" "ssh_target" {
     ]
   }
 }
+
