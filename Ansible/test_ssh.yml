@@ -1,0 +1,24 @@
+---
+- name: Test de connexion SSH entre les serveurs
+  hosts: ubuntu_servers
+  become: false
+
+  vars:
+    
+    target_host: "{{ '192.168.1.22' if inventory_hostname == 'server1' else '192.168.1.21' }}"
+
+  tasks:
+    - name: Test de connexion SSH entre chaque serveur
+      shell: ssh -o StrictHostKeyChecking=no -o ConnectTimeout=5 admin@{{ target_host }} "echo OK"
+      register: ssh_result
+      ignore_errors: yes
+
+    - name: Affiche le résultat
+      debug:
+        msg: >
+          {% if ssh_result.rc == 0 %}
+            ✅ Connexion SSH réussie entre {{ inventory_hostname }} et {{ target_host }} !
+          {% else %}
+            ❌ Échec de la connexion SSH depuis {{ inventory_hostname }} vers {{ target_host }}.
+            Erreur : {{ ssh_result.stderr }}
+          {% endif %}

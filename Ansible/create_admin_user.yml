@@ -1,0 +1,21 @@
+---
+- name: Création de l'utilisateur admin sur les serveurs
+  hosts: ubuntu_servers
+  become: yes
+  tasks:
+    - name: Création de l'utilisateur admin
+      user:
+        name: admin
+        groups: admin
+        append: yes
+        shell: /bin/bash
+        state: present
+        create_home: yes
+
+    - name: Création du dossier .ssh
+      file:
+        path: /home/admin/.ssh
+        state: directory
+        owner: admin
+        group: admin
+        mode: 0700

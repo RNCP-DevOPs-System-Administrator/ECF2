@@ -1,0 +1,7 @@
+[ubuntu_servers]
+server1 ansible_host=192.168.1.21
+server2 ansible_host=192.168.1.22
+
+[ubuntu_servers:vars]
+ansible_user=ubuntu
+ansible_ssh_private_key_file=~/.ssh/id_rsa

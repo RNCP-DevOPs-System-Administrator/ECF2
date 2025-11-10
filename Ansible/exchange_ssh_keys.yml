@@ -1,0 +1,29 @@
+---
+- name: Échange des clés SSH entre les 2 serveurs ubuntu
+  hosts: ubuntu_servers
+  gather_facts: false
+  become: yes
+  tasks :   
+    
+    - name: Générer la paire de clés SSH pour l'utilisateur admin
+      openssh_keypair:
+        path: /home/admin/.ssh/id_rsa
+        owner: admin
+        group: admin
+        mode: '0600'
+      register: admin_ssh_key
+
+
+    - name: Ajouter la clé publique de server1 sur server2
+      when: inventory_hostname == 'server2'
+      authorized_key:
+        user: admin
+        state: present
+        key: "{{ hostvars['server1']['admin_ssh_key']['public_key'] }}"
+
+    - name: Ajouter la clé publique de server2 sur server1
+      when: inventory_hostname == 'server1'
+      authorized_key:
+        user: admin
+        state: present
+        key: "{{ hostvars['server2']['admin_ssh_key']['public_key'] }}" 

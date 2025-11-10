@@ -1,0 +1,17 @@
+# 1. Créer les utilisateurs admin sur les 2 serveurs
+ansible-playbook -i hosts create_admin_user.yml --check
+
+# 2. Échanger les clés SSH entre les 2 serveurs
+ansible-playbook -i hosts exchange_ssh_keys.yml --check
+
+# 3. Test de connexion SSH entre les 2 serveurs
+ansible-playbook -i hosts test_ssh.yml --check
+
+
+
+ssh admin@192.168.1.22  # depuis 192.168.1.21
+ssh admin@192.168.1.21  # depuis 192.168.1.22
+
+
+
+

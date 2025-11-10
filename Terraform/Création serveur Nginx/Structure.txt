@@ -1,0 +1,5 @@
+terraform/
+├── main.tf
+├── variables.tf
+├── index.html
+└── nginx_custom.conf
